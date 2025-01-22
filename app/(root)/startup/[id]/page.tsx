@@ -36,23 +36,23 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 				<div className="space-y-5 mt-5 max-w-4xl mx-auto">
 					<div className="flex-between">
 						<Link
-							href={`/user/${post.author._id}`}
+							href={`/user/${post.author?._id}`}
 							className="flex items-center gap-2 mb-3">
 							<Image
-								src={post.author.image}
+								src={post.author?.image}
 								height={64}
 								width={64}
 								alt="avatar"
 								className="rounded-full"
 							/>
 							<div>
-								<p className="text-20-medium">{post.author.name}</p>
+								<p className="text-20-medium">{post.author?.name}</p>
 								<p className="text-16-medium !text-black-300">
-									@{post.author.username}
+									@{post.author?.username}
 								</p>
 							</div>
 						</Link>
-						<p className="category-tag">{post.category}</p>
+						<p className="category-tag">{post?.category}</p>
 					</div>
 					<h3 className="text-30-bold">Pitch Details</h3>
 					{parsedContent ? (
