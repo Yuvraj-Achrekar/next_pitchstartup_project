@@ -10,7 +10,9 @@ export const createPitch = async (
 	form: FormData,
 	pitch: string
 ) => {
-	const session = auth();
+	const session = await auth();
+	console.log("action session", session);
+
 	if (!session)
 		return parseServerActionResponse({
 			error: "Not Signed In",
@@ -26,12 +28,13 @@ export const createPitch = async (
 	try {
 		const startup = {
 			title,
+			views: 0,
 			description,
 			category,
-			link,
+			image: link,
 			slug: {
 				_type: "slug",
-				current: "slug",
+				current: slug,
 			},
 			author: {
 				_type: "reference",
